@@ -1,0 +1,345 @@
+<html>
+<head>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
+          rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/styles.css" type="text/css" rel="stylesheet">
+    <title>Hello Chat</title>
+
+
+    <style>
+        .chat_list {
+            cursor: pointer;
+        }
+        .incoming_msg{
+            margin: 13px 0 13px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div ></div>
+    <h3 class=" text-center mt-5">Welcome to HelloChat <%- user.name %></h3>
+    <p class="text-center mb-5">Developed by rabbialrabbi@gamil.com</p>
+    <div class="messaging">
+        <div class="inbox_msg">
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Friends</h4>
+                    </div>
+                    <div class="srch_bar">
+                        <div class="stylish-input-group">
+                            <input type="text" class="search-bar" id="search" placeholder="Search">
+                            <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span></div>
+                    </div>
+                </div>
+                <div class="inbox_chat" id="friendList">
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat_list">
+                        <div class="chat_people">
+                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                            <div class="chat_ib">
+                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mesgs">
+                <div class="msg_history" id="chatHistory">
+                    <h1 class="text-center">Welcome</h1>
+                </div>
+                <div class="type_msg" id="writeMessage">
+                    <div class="input_msg_write" >
+                        <input type="hidden" id="partner" value="" />
+                        <input type="hidden" id="connection_id" value="" />
+                        <input type="text" id="message" class="write_msg" placeholder="Type a message"/>
+                        <button class="msg_send_btn" type="button" id="sendMessage"><i class="fa fa-paper-plane-o"
+                                                                      aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <p class="text-center top_spac"> Developed by <a target="_blank" href="">Rabbial Anower</a></p>
+
+    </div>
+</div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    let user_id = '<%- user.id %>';
+
+    let url = new URL(window.location)
+    url = url.hostname + ':5000'
+    console.log(url.hostname)
+
+
+    const socket = io(url.hostname)
+
+    ping()
+
+    socket.on('load_friends', function (friends) {
+        console.log(friends)
+        updateFriendList(friends)
+    })
+    socket.on('receiveMessage',function (message) {
+        updateIncomingMessage(message)
+    })
+
+    $('#writeMessage').hide()
+
+    $(document).ready(function () {
+        $('#friendList').on('click','.friendList',function () {
+
+            $('.chat_list').removeClass('active_chat')
+            $(this).addClass('active_chat')
+
+            let id = parseInt($(this).data('id'))
+            let connection_id = parseInt($(this).data('connection'))
+            $('#partner').val(id)
+            $('#connection_id').val(connection_id)
+
+
+            $('#writeMessage').show()
+
+            socket.emit('load_message',{user_id:user_id,partner_id:id})
+            console.log({user_id:user_id,partner_id:id})
+
+            socket.on('load_message',function (messages) {
+                loadMessages(messages)
+                console.log(messages)
+            })
+        })
+
+        $('#sendMessage').click(function () {
+            let messageText = $('#message').val();
+            let connection_id = $('#connection_id').val();
+            let partner = $('#partner').val();
+            updateOutgoingMessage(messageText)
+            socket.emit('sentMessage', {
+                fromId: user_id,
+                toId: partner,
+                connection_id: connection_id,
+                message: messageText,
+                messageType: 'text',
+            })
+            $('#message').val('');
+
+        })
+
+        $('#search').keyup(function () {
+            let searchText = $(this).val()
+            axios.get('/find-friend', {
+                params: {
+                    search : searchText
+                }
+            }).then(function (res) {
+                updateSearchList(res.data)
+                // console.log()
+
+            }).catch(function (err) {
+
+            })
+        })
+
+        $('#friendList').on('click','.friendBtn',function () {
+            console.log($(this).data('id'))
+            let friend = $(this).data('id')
+            axios.post('/find-friend', {
+                user_id: user_id,
+                partner_id: friend
+            }).then(function (res) {
+                console.log(res.data)
+            }).catch(function (err) {
+
+            })
+
+        })
+    })
+
+    function ping(){
+        socket.emit('ping',{user_id:user_id})
+    }
+
+    function updateFriendList(friends) {
+        let friendListHTML = ''
+        friends.forEach(function (friend) {
+            friendListHTML += `
+                <div class="chat_list friendList" data-id="${friend.id}" data-connection="${friend.connection_id}">
+                    <div class="chat_people">
+                        <div class="chat_img"><img src="${friend.avatar}" alt="${friend.name}"></div>
+                        <div class="chat_ib">
+                            <h5>${friend.name} <span class="chat_date">${friend.created_at}</span></h5>
+                            <p>${friend.lastMessage}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        $('#friendList').html(friendListHTML)
+    }
+    function updateSearchList(uses) {
+        let friendListHTML = ''
+        uses.forEach(function (friend) {
+            friendListHTML += `
+                <div class="chat_list">
+                    <div class="chat_people">
+                        <div class="chat_img"><img src="${friend.avatar}" alt="${friend.name}"></div>
+                        <div class="chat_ib">
+                            <h5>${friend.name} <span class="chat_date"><button class="btn btn-success friendBtn" data-id="${friend.id}">Sent</button></span></h5>
+                            <p>${friend.lastMessage}</p>
+                        </div>
+                    </div>
+                </div>
+            `
+        })
+
+        $('#friendList').html(friendListHTML)
+    }
+
+    function loadMessages(messages) {
+        messages = messages ? messages : []
+        let messageHTML = ''
+        messages.forEach(function (message) {
+
+            if(message.user_id == user_id){
+                messageHTML += `
+                    <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>${message.message}</p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                    </div>
+            `
+            }else{
+                messageHTML += `
+                <div class="incoming_msg">
+                    <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <p>${message.message}</p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                    </div>
+                </div>
+            `
+            }
+
+        })
+
+        $('#chatHistory').html(messageHTML)
+
+
+    }
+
+    function updateIncomingMessage(message) {
+        console.log(message)
+        let activeUser = $('.active_chat').data('id')
+        if(activeUser == message.toId){
+            let messageHTML = `
+            <div class="incoming_msg">
+                    <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                       alt="sunil"></div>
+                    <div class="received_msg">
+                        <div class="received_withd_msg">
+                            <p>${message.message}</p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                    </div>
+                </div>
+`
+            $('#chatHistory').append(messageHTML)
+        }
+    }
+
+    function updateOutgoingMessage(message) {
+        let messageHTML = `
+            <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>${message}</p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                    </div>
+`
+        $('#chatHistory').append(messageHTML)
+    }
+
+</script>
+</body>
+</html>
