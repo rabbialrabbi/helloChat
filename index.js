@@ -7,6 +7,12 @@ const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const PORT = process.env.PORT || 5000
+const dbConfig ={
+    host: "ec2-34-201-95-176.compute-1.amazonaws.com",
+    user: "btjqbuvlqdqbap",
+    password: "382e768d0b95fec7ccb54ea23aed2858ec9e1edf28bb6e65fcc0de490a0e43ef",
+    database: "d4j4dic3fpaqcr"
+}
 
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({
@@ -25,12 +31,7 @@ app.post('/login', (req, res) => {
     let email = req.body.email
     let password = req.body.password
 
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if (err) throw err;
         let getUserSQL = 'SELECT * FROM users WHERE email = "' + email +'"'
@@ -54,7 +55,7 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/register', (req, res) => {
-    res.render('register');
+    res.render('auth/register');
 })
 
 app.post('/register', (req, res) => {
@@ -67,12 +68,7 @@ app.post('/register', (req, res) => {
     let avatar = `https://ui-avatars.com/api/?name=${firstName}+${lastName}`
     let created_at = new Date()
 
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
 
     con.connect(function(err) {
         if (err) throw err;
@@ -116,12 +112,7 @@ app.post('/register', (req, res) => {
 
 app.get('/find-friend', (req, res) => {
     let searchText = req.query.search
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if (err) throw err;
         let getUserSQL = 'SELECT id , name, email, avatar, created_at FROM users WHERE name LIKE "%' + searchText +'%" OR email LIKE "%' + searchText +'%"'
@@ -141,12 +132,7 @@ app.get('/find-friend', (req, res) => {
 app.post('/find-friend', (req, res) => {
     let user_id = req.body.user_id
     let partner_id = req.body.partner_id
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
     con.connect(function(err) {
         if (err) throw err;
         let getConnectionSQL = 'INSERT INTO connections (user_id, connected_user_id,status,created_at) VALUES ?'
@@ -212,12 +198,7 @@ io.on('connection',function (socket) {
 })
 
 function updateMessageToDatabase(connection) {
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
 
     con.connect(function(err) {
         if (err) throw err;
@@ -234,12 +215,7 @@ function updateMessageToDatabase(connection) {
 
 function getFriend(user) {
 
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
 
     con.connect(function(err) {
         let users = []
@@ -276,12 +252,7 @@ function getFriend(user) {
 function getMessage(connection) {
     console.log(connection)
 
-    const con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: "hello_chat"
-    });
+    const con = mysql.createConnection(dbConfig);
 
     con.connect(function(err) {
         if (err) throw err;
