@@ -13,6 +13,12 @@ const dbConfig ={
     password: "382e768d0b95fec7ccb54ea23aed2858ec9e1edf28bb6e65fcc0de490a0e43ef",
     database: "d4j4dic3fpaqcr"
 }
+// const dbConfig ={
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "hello_chat"
+// }
 
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({
@@ -25,6 +31,10 @@ const server = app
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('auth/login'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+app.get('/login',(req, res)=>{
+    res.render('auth/login');
+})
 
 app.post('/login', (req, res) => {
 
@@ -139,7 +149,6 @@ app.post('/find-friend', (req, res) => {
         var values = [
             [user_id,partner_id,1,new Date()]
         ];
-        console.log('hi')
         con.query(getConnectionSQL,[values], function (err, result, fields) {
             if (err) throw err;
             getFriend(user_id)
@@ -250,7 +259,6 @@ function getFriend(user) {
 }
 
 function getMessage(connection) {
-    console.log(connection)
 
     const con = mysql.createConnection(dbConfig);
 
@@ -260,10 +268,8 @@ function getMessage(connection) {
             connection.user_id + ' AND connected_user_id = ' + connection.partner_id +
             ' OR user_id = ' +
             connection.partner_id + ' AND connected_user_id = ' + connection.user_id + ' ORDER BY created_at ASC '
-        console.log(connectionQry)
 
         con.query(connectionQry, function (err, result, fields) {
-            console.log(result)
             if (err) throw err;
             let userConnection = result[0]
 

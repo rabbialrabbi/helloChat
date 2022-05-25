@@ -39,83 +39,6 @@
                     </div>
                 </div>
                 <div class="inbox_chat" id="friendList">
-                    <div class="chat_list active_chat">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                       alt="sunil"></div>
-                            <div class="chat_ib">
-                                <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="mesgs">
@@ -127,7 +50,7 @@
                         <input type="hidden" id="partner" value="" />
                         <input type="hidden" id="connection_id" value="" />
                         <input type="text" id="message" class="write_msg" placeholder="Type a message"/>
-                        <button class="msg_send_btn" type="button" id="sendMessage"><i class="fa fa-paper-plane-o"
+                        <button class="msg_send_btn" type="submit" id="sendMessage"><i class="fa fa-paper-plane-o"
                                                                       aria-hidden="true"></i></button>
                     </div>
                 </div>
@@ -166,6 +89,14 @@
 
     $('#writeMessage').hide()
 
+    var input = document.getElementById("message");
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("sendMessage").click();
+        }
+    });
+
     $(document).ready(function () {
         $('#friendList').on('click','.friendList',function () {
 
@@ -202,6 +133,8 @@
                 messageType: 'text',
             })
             $('#message').val('');
+            var objDiv = document.getElementById("chatHistory");
+            objDiv.scrollTop = objDiv.scrollHeight;
 
         })
 
@@ -326,6 +259,9 @@
                 </div>
 `
             $('#chatHistory').append(messageHTML)
+
+            var objDiv = document.getElementById("chatHistory");
+            objDiv.scrollTop = objDiv.scrollHeight;
         }
     }
 
